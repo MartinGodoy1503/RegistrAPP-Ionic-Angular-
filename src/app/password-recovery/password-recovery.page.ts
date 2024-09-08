@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { EmailValidator, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { isEmpty } from 'rxjs';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AlertService } from '../alert.service';
 
 @Component({
   selector: 'app-password-recovery',
@@ -11,7 +11,7 @@ export class PasswordRecoveryPage implements OnInit {
 
   formularioPasswordRecovery: FormGroup = this.fb.group({});
 
-  constructor(public  fb: FormBuilder) { }
+  constructor(public  fb: FormBuilder,private alertService: AlertService) { }
 
   ngOnInit() {
     this.formularioPasswordRecovery = this.fb.group({
@@ -19,12 +19,19 @@ export class PasswordRecoveryPage implements OnInit {
     })
   }
 
-  onSubmit() {
+  async onSubmit() {
     if (this.formularioPasswordRecovery.valid) {
       console.log('Formulario válido', this.formularioPasswordRecovery.value);
+      
+      const email = this.formularioPasswordRecovery.get('email')?.value;
+      const message = `El enlace de recuperación de contraseña ha sido enviado a ${email}.`;
+
+      await this.alertService.presentAlert('Éxito', message);    
+      
     } else {
-      // Mensaje de error 
-      console.log('Formulario inválido');
+
+      // Mostrar alert de error
+
     }
   }
 } 

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, AbstractControl, ValidatorFn } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AlertService } from '../alert.service';
+import { delay } from 'rxjs';
 
 
 @Component({
@@ -11,7 +14,7 @@ export class SignupPage implements OnInit {
 
   formulariosignup: FormGroup = this.fb.group({});
 
-  constructor(public  fb: FormBuilder) { 
+  constructor(public  fb: FormBuilder, private router: Router, private alertService: AlertService) { 
     
   }
 
@@ -43,9 +46,14 @@ export class SignupPage implements OnInit {
     return null;
   };
 
-  onSubmit() {
+  async onSubmit() {
     if (this.formulariosignup.valid) {
+
       console.log('Formulario válido', this.formulariosignup.value);
+      const message = `Registrado con éxito!`;
+
+      await this.alertService.presentAlert('Éxito', message);
+      this.router.navigate(['/login']);
     } else {
       // Mensaje de error 
       console.log('Formulario inválido');

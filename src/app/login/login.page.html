@@ -24,7 +24,7 @@
       
 
       <!-- Grid ionic & form -->
-      <form [formGroup]="formulariologin">
+      <form [formGroup]="formulariologin" (ngSubmit)="onSubmit()">
       <ion-row>
           <ion-col>
           <!-- Input username -->
@@ -40,6 +40,12 @@
               label-placement="floating" 
               fill="outline" placeholder="Ejemplo: JohnDoe01 ">
             </ion-input>
+
+            <div *ngIf="formulariologin.get('username')?.invalid && (formulariologin.get('username')?.dirty || formulariologin.get('username')?.touched)">
+              <div *ngIf="formulariologin.get('username')?.errors?.['required']">
+                El nombre de usuario es obligatorio.
+              </div>
+            </div>  
             </ion-col>
           </ion-row>
           <!-- Input password -->
@@ -55,12 +61,20 @@
                 label-placement="floating" fill="outline" 
                 placeholder="Enter text">
             </ion-input>
+
+
+            <div *ngIf="formulariologin.get('password')?.invalid && (formulariologin.get('password')?.dirty || formulariologin.get('password')?.touched)">
+              <div *ngIf="formulariologin.get('password')?.errors?.['required']">
+                Ingrese su contraseña.
+              </div>
+            </div> 
+
             </ion-col>
           </ion-row>
           <!-- Botón Ingresar -->
           <ion-row>
             <ion-col>
-             <!-- <ion-button (click)="ingresar()" fill="clear">Ingresar</ion-button>-->
+              <ion-button expand="full" type="submit">Ingresar</ion-button>
             </ion-col>
           </ion-row>
           <!-- Agregar recuperar contraseña aquí abajo! revisar app-routing.modules.ts-->

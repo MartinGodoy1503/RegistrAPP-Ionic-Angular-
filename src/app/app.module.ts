@@ -16,13 +16,14 @@ import { SignupComponent } from './signup/signup.component';
 import { HomePage } from './home/home.page';
 
 
+
 @NgModule({
 
   declarations: 
     [ AppComponent, 
       LoginComponent,
       SignupComponent,
-       ],
+],
 
     imports: 
       [ BrowserModule, 
@@ -35,13 +36,15 @@ import { HomePage } from './home/home.page';
         BrowserModule,
         BrowserAnimationsModule,
         MatCardModule, ],
-
+        
     providers: 
       [{ provide: RouteReuseStrategy, 
         useClass: IonicRouteStrategy }, 
         provideAnimationsAsync()],
+        
 
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+
 })
 export class AppModule {}
