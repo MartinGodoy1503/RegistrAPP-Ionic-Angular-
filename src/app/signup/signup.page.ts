@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, AbstractControl, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertService } from '../alert.service';
-import { delay } from 'rxjs';
 
 
 @Component({
@@ -48,10 +47,8 @@ export class SignupPage implements OnInit {
 
   async onSubmit() {
     if (this.formulariosignup.valid) {
-
-      console.log('Formulario válido', this.formulariosignup.value);
+      //console.log('Formulario válido', this.formulariosignup.value);
       const message = `Registrado con éxito!`;
-
       await this.alertService.presentAlert('Éxito', message);
       this.router.navigate(['/login']);
     } else {

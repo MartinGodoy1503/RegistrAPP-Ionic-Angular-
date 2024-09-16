@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AlertService } from '../alert.service';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -13,7 +12,7 @@ export class LoginPage implements OnInit {
 
   formulariologin: FormGroup = this.fb.group({});
 
-  constructor(public  fb: FormBuilder, private alertService: AlertService, private router: Router, private authService: AuthService,
+  constructor(public  fb: FormBuilder, private router: Router, private authService: AuthService,
   ) {
     this.formulariologin = this.fb.group({
       'username':new FormControl  ("", Validators.required),
@@ -22,28 +21,21 @@ export class LoginPage implements OnInit {
    }
   ngOnInit() {
 
-
-
     this.formulariologin = this.fb.group({
-      username: ['', [Validators.required]],
-      password: ['', [Validators.required]],
+      username: ['', [Validators.required,]],
+      password: ['', [Validators.required,]],
     });
+
   }
 
   async onSubmit() {
 
-    if (this.formulariologin.valid) {
-      console.log('Formulario válido', this.formulariologin.value);
-      
+    if (this.formulariologin.valid) {  
       const username = this.formulariologin.get('username')?.value;
       this.authService.setUserName(username);
       this.router.navigate(['/home']);
 
-    } else {
-
-      // Mostrar alert de error
-
-    }
+    } 
 
   }
 

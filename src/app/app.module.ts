@@ -11,9 +11,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
-import { HomePage } from './home/home.page';
+
 
 
 
@@ -21,8 +19,6 @@ import { HomePage } from './home/home.page';
 
   declarations: 
     [ AppComponent, 
-      LoginComponent,
-      SignupComponent,
 ],
 
     imports: 
