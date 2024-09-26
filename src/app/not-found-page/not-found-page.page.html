@@ -1,15 +1,31 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>notFoundPage</ion-title>
-  </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-card>
-    <ion-card-header>
-      Página no encontrada 
-    </ion-card-header>
-    <ion-icon name="sad" style="font-size: 50px;"></ion-icon>
-    Nada que ver por aquí
-  </ion-card>
-</ion-content>
+<body>
+  <ion-header [translucent]="true">
+  </ion-header>
+  
+  <ion-content [fullscreen]="true">
+    <ion-grid class="ion-padding-vertical ion-justify-content-center ion-align-items-center" style="height: 100%;">
+      <ion-row class="ion-justify-content-center">
+        <ion-col>
+          <h2>Página no encontrada</h2>
+        </ion-col>
+      </ion-row>
+  
+      <ion-row class="ion-justify-content-center">
+        <ion-col>
+          <img id="cat-img404" src="assets/img/cat404.png" alt="GatoEstirandose 404">
+        </ion-col>
+      </ion-row>
+  
+      <ion-row class="ion-justify-content-center">
+        <ion-col>
+          <p>Ups! Ha ocurrido un problema.</p>
+          <ion-button (click)="goBack()">Regresar</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+  
+</body>

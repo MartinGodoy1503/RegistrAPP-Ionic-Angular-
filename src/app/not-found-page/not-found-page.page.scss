@@ -1,0 +1,25 @@
+@import '/src/theme/variables';
+
+#cat-img404{
+    width: auto;
+    align-items: center;
+    max-width: 100%; 
+    height: auto;
+    margin-top: 16px;
+    opacity: 0.5;
+}
+
+ion-col {
+    text-align: center; 
+    color: rgba(47, 122, 184, 0.863);
+    font-size: 3vh;
+}
+
+h2{
+    color: rgb(18, 128, 192);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}   
+
+ion-button{
+    background-color: $warning;
+}
