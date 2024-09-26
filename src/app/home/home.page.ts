@@ -10,8 +10,11 @@ export class HomePage implements OnInit {
   userName?: string;
 
   constructor(private authService: AuthService) { }
-
-  ngOnInit() {
+  
+  ngOnInit(): void {
     this.userName = this.authService.getUserName();
+    
   }
+
+  
 }

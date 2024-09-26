@@ -32,7 +32,11 @@ export class LoginPage implements OnInit {
 
     if (this.formulariologin.valid) {  
       const username = this.formulariologin.get('username')?.value;
+      //Rescatamos su nombre para mostrarlo en pantalla 
       this.authService.setUserName(username);
+      //llama al metodo login
+      this.authService.login();
+
       this.router.navigate(['/home']);
 
     } 
