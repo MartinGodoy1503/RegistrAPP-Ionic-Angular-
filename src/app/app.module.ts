@@ -1,7 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-
+import { IonicStorageModule } from '@ionic/storage-angular';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
@@ -11,6 +11,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SQLite } from '@awesome-cordova-plugins/sqlite/ngx';
 
 
 
@@ -31,10 +32,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         MatCardModule,
         BrowserModule,
         BrowserAnimationsModule,
-        MatCardModule, ],
+        MatCardModule,
+        IonicStorageModule.forRoot(), ],
         
     providers: 
-      [{ provide: RouteReuseStrategy, 
+      [ SQLite,
+        { provide: RouteReuseStrategy,
         useClass: IonicRouteStrategy }, 
         provideAnimationsAsync()],
         

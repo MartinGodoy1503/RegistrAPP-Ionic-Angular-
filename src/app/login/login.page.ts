@@ -29,19 +29,15 @@ export class LoginPage implements OnInit {
   }
 
   async onSubmit() {
-
     if (this.formulariologin.valid) {  
       const username = this.formulariologin.get('username')?.value;
-      //Rescatamos su nombre para mostrarlo en pantalla 
+      const password = this.formulariologin.get('password')?.value;
       this.authService.setUserName(username);
-      //llama al metodo login
-      this.authService.login();
-
-      this.router.navigate(['/home']);
-
+      if (await this.authService.login(username, password)) {
+        this.router.navigate(['/home']);
+      } else {
+        alert('Credenciales incorrectas. Intenta de nuevo.');
+      }
     } 
-
   }
-
-
 }

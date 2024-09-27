@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, AbstractControl, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertService } from '../alert.service';
-
+import { DBTaskService } from '../services/dbtask.service';
 
 @Component({
   selector: 'app-signup',
@@ -13,7 +13,11 @@ export class SignupPage implements OnInit {
 
   formulariosignup: FormGroup = this.fb.group({});
 
-  constructor(public  fb: FormBuilder, private router: Router, private alertService: AlertService) { 
+  constructor(
+    public  fb: FormBuilder, 
+    private router: Router, 
+    private alertService: AlertService,
+    private dbService: DBTaskService) { 
     
   }
 
@@ -47,12 +51,17 @@ export class SignupPage implements OnInit {
 
   async onSubmit() {
     if (this.formulariosignup.valid) {
-      //console.log('Formulario válido', this.formulariosignup.value);
-      const message = `Registrado con éxito!`;
-      await this.alertService.presentAlert('Éxito', message);
-      this.router.navigate(['/login']);
+      const { username, email, password } = this.formulariosignup.value;
+      try {
+        await this.dbService.registerUser(username, email, password);
+        const message = 'Registrado con éxito!';
+        await this.alertService.presentAlert('Éxito', message);
+        this.router.navigate(['/login']);
+      } catch (error) {
+        console.error('Error al registrar usuario', error);
+        await this.alertService.presentAlert('Error', 'No se pudo registrar el usuario.');
+      }
     } else {
-      // Mensaje de error 
       console.log('Formulario inválido');
     }
   }

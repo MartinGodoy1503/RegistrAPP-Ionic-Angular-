@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { DBTaskService } from './dbtask.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,14 +9,22 @@ export class AuthService {
   private userName?: string;
   private isLoggedIn = false;
 
-  constructor() { }
+  constructor(private dbTask: DBTaskService) { }
 
   isAuthenticated(): boolean {
     return this.isLoggedIn;
   }
 
-  login() {
-    this.isLoggedIn = true;
+  async login(username: string, password: string): Promise<boolean> {
+    const user = await this.dbTask.getUser(username, password);
+
+    if (user) {
+      this.isLoggedIn = true;
+      localStorage.setItem('userName', username); 
+      return true;
+    }
+
+    return false;
   }
 
   logout() {
