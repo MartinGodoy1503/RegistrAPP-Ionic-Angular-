@@ -38,6 +38,7 @@ export class LoginPage implements OnInit {
       } else {
         alert('Credenciales incorrectas. Intenta de nuevo.');
       }
-    } 
+    }
+    //H 
   }
 }
