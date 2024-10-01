@@ -29,19 +29,31 @@ export class LoginPage implements OnInit {
   }
 
   async onSubmit() {
-
-    if (this.formulariologin.valid) {  
+    if (this.formulariologin.valid) {
       const username = this.formulariologin.get('username')?.value;
-      //Rescatamos su nombre para mostrarlo en pantalla 
+      const password = this.formulariologin.get('password')?.value; // Obtiene la contraseña
+  
+      // Establece el nombre de usuario para mostrarlo en pantalla
       this.authService.setUserName(username);
-      //llama al metodo login
-      this.authService.login();
-
-      this.router.navigate(['/home']);
-
-    } 
-
+  
+      // Llama al método login pasando username y password
+      this.authService.login(username, password)
+        .subscribe({
+          next: (user) => {
+            // Si el login es exitoso, redirige al home
+            this.router.navigate(['/home']);
+          },
+          error: (err) => {
+            // Manejo de error, puedes mostrar un mensaje al usuario
+            console.error(err);
+            alert('Credenciales inválidas'); // Muestra un mensaje de alerta al usuario
+          }
+        });
+    } else {
+      // Manejo de error si el formulario no es válido
+      alert('Por favor, completa todos los campos requeridos.');
+    }
   }
-
+  
 
 }

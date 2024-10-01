@@ -1,0 +1,97 @@
+{
+    "usuarios": [
+      {
+        "id": 1,
+        "username": "jdoe",
+        "email": "jdoe@example.com",
+        "password": "Admin123!",
+        "nombre_completo": "John Doe",
+        "rol": "alumno",
+        "ultima_sesion": {
+          "inicio": "2024-09-28T09:45:00Z",
+          "fin": "2024-09-28T11:00:00Z",
+          "estado": "activa"
+        },
+        "estado": "activo",
+        "asistencias": [
+          {
+            "fecha": "2024-09-28",
+            "hora": "10:00 AM",
+            "codigo_qr": "abc123",
+            "registrado_por": "QR",
+            "asistio": true,
+            "asignatura": {
+              "id": 1,
+              "nombre": "Matemáticas",
+              "profesor": "mgarcia"
+            }
+          },
+          {
+            "fecha": "2024-09-29",
+            "hora": "10:00 AM",
+            "codigo_qr": "xyz789",
+            "registrado_por": "QR",
+            "asistio": false,
+            "asignatura": {
+              "id": 1,
+              "nombre": "Matemáticas",
+              "profesor": "mgarcia"
+            }
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "username": "mgarcia",
+        "email": "mgarcia@example.com",
+        "password": "Admin123!",
+        "nombre_completo": "Maria Garcia",
+        "rol": "profesor",
+        "ultima_sesion": {
+          "inicio": "2024-09-28T08:30:00Z",
+          "fin": "2024-09-28T12:00:00Z",
+          "estado": "activa"
+        },
+        "estado": "activo",
+        "asistencias": []
+      },
+      {
+        "id": 2,
+        "username": "flopez",
+        "email": "flopez12@example.com",
+        "password": "Admin123!",
+        "nombre_completo": "Francisco Lopez",
+        "rol": "alumno",
+        "ultima_sesion": {
+          "inicio": "2024-09-28T08:30:00Z",
+          "fin": "2024-09-28T12:00:00Z",
+          "estado": "activa"
+        },
+        "estado": "activo",
+        "asistencias": [{
+          "fecha": "2024-09-28",
+          "hora": "10:00 AM",
+          "codigo_qr": "abc123",
+          "registrado_por": "QR",
+          "asistio": true,
+          "asignatura": {
+            "id": 1,
+            "nombre": "Matemáticas",
+            "profesor": "mgarcia"
+          }
+        },
+        {
+          "fecha": "2024-09-29",
+          "hora": "10:00 AM",
+          "codigo_qr": "xyz789",
+          "registrado_por": "QR",
+          "asistio": false,
+          "asignatura": {
+            "id": 1,
+            "nombre": "Matemáticas",
+            "profesor": "mgarcia"
+          }
+        }]
+      }
+    ]
+  }

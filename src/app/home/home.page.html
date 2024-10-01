@@ -7,8 +7,23 @@
     </ion-toolbar>
   </ion-header>
 
-  <!-- CONTENIDO MEDIANTE CHILDREN-->
-  <ion-router-outlet></ion-router-outlet>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Home</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <!-- Si el usuario es un estudiante, mostramos el componente del estudiante -->
+    <ng-container *ngIf="userRole === 'alumno'">
+      <app-alumno></app-alumno> <!-- Componente para Estudiante -->
+    </ng-container>
+  
+    <!-- Si el usuario es un profesor, mostramos el componente del profesor -->
+    <ng-container *ngIf="userRole === 'profesor'">
+      <app-profesor></app-profesor> <!-- Componente para Profesor -->
+    </ng-container>
+  </ion-content>
 
   <ion-footer id="ion-footer">
     <ion-toolbar>
